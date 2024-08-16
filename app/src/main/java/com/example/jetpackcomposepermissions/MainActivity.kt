@@ -26,6 +26,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jetpackcomposepermissions.ui.theme.JetpackComposePermissionsTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val permissionToRequest = arrayOf(
+        Manifest.permission.RECORD_AUDIO,
+        Manifest.permission.CALL_PHONE
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -44,7 +50,6 @@ class MainActivity : ComponentActivity() {
 
                     }
                 )
-
                 val multiplePermission = rememberLauncherForActivityResult(
                     contract = ActivityResultContracts.RequestMultiplePermissions(),
                     onResult = { perms ->
@@ -57,7 +62,6 @@ class MainActivity : ComponentActivity() {
 
                     }
                 )
-
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Center,
@@ -72,12 +76,7 @@ class MainActivity : ComponentActivity() {
                     }
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(onClick = {
-                        multiplePermission.launch(
-                           arrayOf(
-                               Manifest.permission.RECORD_AUDIO,
-                               Manifest.permission.CALL_PHONE
-                           )
-                        )
+                        multiplePermission.launch(permissionToRequest)
                     }) {
                         Text(text = "Multiple Permission")
                     }

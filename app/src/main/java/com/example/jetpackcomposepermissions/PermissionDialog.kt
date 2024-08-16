@@ -83,10 +83,10 @@ class CameraPermissionProvider: PermissionTextProvider{
 class AudioRecorderPermissionProvider: PermissionTextProvider{
     override fun getDescription(isPermanentlyDeclined: Boolean): String {
         return if(isPermanentlyDeclined){
-            "It seems that you permanently declined audio recorder permission. " +
+            "It seems that you permanently declined microphone permission. " +
                     "You can go to app settings to grant it"
         }else {
-            "This application needs audio recorder permission so that your friends" +
+            "This application needs microphone permission so that your friends" +
                     "can hear you while doing phone call"
         }
     }
@@ -99,8 +99,8 @@ class PhoneCallPermissionProvider: PermissionTextProvider{
             "It seems that you permanently declined phone call permission. " +
                     "You can go to app settings to grant it"
         }else {
-            "This application needs phone call permission so that you " +
-                    "talk to your friends"
+            "This application needs your phone call permission so that you " +
+                    "can talk to your friends"
         }
     }
 }
