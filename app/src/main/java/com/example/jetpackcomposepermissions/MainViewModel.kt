@@ -16,7 +16,7 @@ class MainViewModel : ViewModel(){
         permission: String,
         isGranted: Boolean,
     ){
-        if(isGranted){
+        if(!isGranted && !visiblePermissionDialogQueue.contains(permission)){
             visiblePermissionDialogQueue.add(0, permission)
         }
     }
